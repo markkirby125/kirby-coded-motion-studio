@@ -12,7 +12,7 @@ One locked entry per speaking character, recorded **before** the first generated
 | engine | `moss-voice` or `moss-nano-tts`. Columns follow the canonical schema in [`04_qa_and_delivery.md`](../../kirby-local-first-video-pipeline/references/04_qa_and_delivery.md); this module does not redefine them |
 | voice_or_ref | The lock: `moss-voice` description string, or `moss-nano-tts` reference clip or preset; never mid-series changes |
 | style_note | ≤200 chars; character dialect/delivery steering, a request to the engine that only the test sentence confirms (proper-noun phonetic spellings live separately in `bible/pronunciation.md`; follow `07_qa_and_review.md`) |
-| locked_on | Date; after lock, changes are a logged owner decision |
+| locked_on | Date; after lock, changes are a logged owner decision (dated entry in `bible/voices.md` prose, outside the template) |
 | test_sentence_result | The dialect test sentence pass/fail + QA numbers |
 
 Dialect/invented-language steering goes in the style note (e.g. "pronounce like Dutch: doubled vowels long, hard g"). Do not assume the local engine honours it: the test sentence per dialect is generated and archived once per voice, and **the owner listens and picks** — a spoken read cannot be judged from text.

@@ -6,7 +6,7 @@ entirely by code** (no video model, ever) → ffmpeg assembly → independent re
 publish and metrics.
 
 - Routing doctrine and TTS ledger: `../kirby-local-first-video-pipeline`
-- Character-sheet SOP: `../kirby-volumetric-character-consistency` (still-image parts only; its turntable video route is excluded by module 02)
+- Character-sheet SOP: `../kirby-volumetric-character-consistency` (borrow the sheet structure only; module 02's local MOSS engines are authoritative; the sibling's cloud still-image tooling and video route are out of policy)
 - Start at `references/00_dispatcher.md`. Project-specific rules live in each project's
   `CLAUDE.md`/`AGENTS.md` and always override this skill.
 

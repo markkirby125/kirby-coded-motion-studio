@@ -56,6 +56,6 @@ Rendered graphics — captions, comms/readouts, notes, end cards, Previously —
 1. Build every part (still+motion, insert) → `parts/<id>.mp4`.
 2. Concat video-only (`-f concat -c copy`) in `start_<v>` order → `joined-<v>.mp4`.
 3. Voice: each line at `start + at` (`adelay=<ms>:all=1`, `amix normalize=0`).
-4. Sfx/room bed from the shot's sound column, engine `moss-sfx-v2` only (policy in [`00_dispatcher.md`](../../kirby-local-first-video-pipeline/references/00_dispatcher.md)); one loud moment cap.
+4. Sfx/room bed from the shot's sound column (supplied by the project layer; not in the base `@shot_list` schema), engine `moss-sfx-v2` only (policy in the [`kirby-local-first-video-pipeline` dispatcher](../../kirby-local-first-video-pipeline/references/00_dispatcher.md)); one loud moment cap.
 5. Final pass — single re-encode: overlays → subtitles burn-in → audio `apad=whole_dur=$DUR,atrim=end=$DUR` **then** `loudnorm I=-14:TP=-1.0:LRA=11` → `export/<v>.mp4` (libass-enabled ffmpeg). Measured lesson (2026-11-07 dry run): loudnorm without a preceding pad/trim truncated the padded tail by ~3 s — always pad→trim→loudnorm, in that order.
 6. `bin/assembly_check.py` asserts durations (video vs audio ≤0.1 s), length band, stream count — exit 1 on any failure.
