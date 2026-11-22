@@ -47,7 +47,7 @@ the `@route_table`/`@tts_ledger` templates. This skill consumes them; it does no
 ## 🔗 Related Skills in the Kirby Ecosystem
 
 * `../../kirby-local-first-video-pipeline/SKILL.md` — route table, TTS ledger, audio QA bin. This skill's fallback spine.
-* `../../kirby-volumetric-character-consistency/SKILL.md` — full character-sheet SOP this studio's module 02 operationalises.
+* `../../kirby-volumetric-character-consistency/SKILL.md` — still-image character-sheet parts only (base, face, turnaround, wardrobe); its volumetric turntable video route is excluded by module 02.
 * `../../kirby-pixel-character-consistency/SKILL.md` — deterministic-renderer character sheets and dated version bumps (the wardrobe ledger's pattern).
 * `../../kirby-yt-faceless-formula/SKILL.md` — channel decoding and packaging; runs before this skill when a new channel is being designed.
 * `../../kirby-ai-design-system/SKILL.md` — thumbnail station (never blocks production).
