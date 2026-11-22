@@ -1,0 +1,14 @@
+{
+  "provider_policy": "local-only: moss-nano-tts (narration/host), moss-voice (characters); cloud TTS out of policy since 2026-11-07",
+  "characters": [
+    {
+      "character": "EXAMPLE",
+      "provider": "moss-voice",
+      "voice": "<moss-voice description string, or moss-nano-tts reference-clip path or preset name>",
+      "style_note": "<=200 chars: character dialect/delivery steering only; proper-noun phonetic spellings live in bible/pronunciation.md",
+      "locked_on": "YYYY-MM-DD",
+      "test_sentence_result": "pass (per-second RMS ok, speech spans file)",
+      "notes": ""
+    }
+  ]
+}

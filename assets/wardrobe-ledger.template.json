@@ -1,0 +1,11 @@
+[
+  {
+    "character": "example",
+    "variant": "example-day1",
+    "date_added": "YYYY-MM-DD",
+    "video": "ep01",
+    "delta": "signature outfit baseline",
+    "reason": "baseline",
+    "sheet_ref": "bible/characters/example/base.png"
+  }
+]

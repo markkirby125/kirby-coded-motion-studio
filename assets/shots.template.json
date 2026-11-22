@@ -1,0 +1,31 @@
+[
+  {
+    "id": "s01",
+    "engine": "still",
+    "seconds": 6,
+    "start_short": 0,
+    "start_full": 0,
+    "in": "short+full",
+    "size": "MS",
+    "camera": "level, locked off",
+    "action": "Prose description of the frame. Never drawn text.",
+    "acting": "Who: what they do.",
+    "characters": ["example"],
+    "wardrobe": "example-day1",
+    "motion": {"type": "push", "rate": 0.0075},
+    "dialogue": [
+      {"character": "EXAMPLE", "line": "spoken text", "sub": "subtitle text", "tts_text": "optional respelled spoken text", "at": 1.5}
+    ],
+    "start_frame": "frames/s01.png"
+  },
+  {
+    "id": "iCap",
+    "engine": "insert",
+    "template": "context-caption",
+    "seconds": 2,
+    "start_short": 0,
+    "in": "short",
+    "text": ["CARD LINE ONE."],
+    "place": {"x": 540, "y": 140, "w": 700}
+  }
+]

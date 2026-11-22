@@ -1,0 +1,37 @@
+# Module 03: Voice
+
+Local TTS only. Cloud TTS (Gemini, ElevenLabs) left policy house-wide on 2026-11-07 and is never called, for any reason: no quota, no budget gate, no cloud fallback. The engine routes (`moss-nano-tts` for narration and host, `moss-voice` for characters) and the `@tts_ledger`, which refuses to record a cloud engine, live in the sibling skill (`kirby-local-first-video-pipeline`, module 02); this module adds the studio's character-voice machinery.
+
+## Voice ledger (`bible/voices.md` + `assets/voice-ledger.template.json`)
+
+One locked entry per speaking character, recorded **before** the first generated line:
+
+| Field | Rule |
+|---|---|
+| character | Cast name |
+| provider / voice | Local engine plus the lock: `moss-voice` + its description string, or `moss-nano-tts` + its reference clip or preset; never mid-series changes |
+| style note | ≤200 chars; character dialect/delivery steering, a request to the engine that only the test sentence confirms (proper-noun phonetic spellings live separately in `bible/pronunciation.md`; follow `07_qa_and_review.md`) |
+| locked on | Date; after lock, changes are a logged owner decision |
+| test result | The dialect test sentence pass/fail + QA numbers |
+
+Dialect/invented-language steering goes in the style note (e.g. "pronounce like Dutch: doubled vowels long, hard g"). Do not assume the local engine honours it: the test sentence per dialect is generated and archived once per voice, and **the owner listens and picks** — a spoken read cannot be judged from text.
+
+## Generation discipline
+
+- **Pre-production / Pre-TTS & Post-synthesis Gates (follow [`07_qa_and_review.md`](./07_qa_and_review.md)):**
+  - Before invoking TTS, draft the text-only `shots.json` pass (`04_shot_list_and_motion.md`) and run [`07_qa_and_review.md`](./07_qa_and_review.md) checkpoint 1: keep `dialogue[*].line`, `dialogue[*].sub`, and `insert` `text` canonical (passing phonetic respelling heuristics via `tts_text` or `-t`/`--text`, keeping `-i`/`--instruction` strictly for voice/tone style).
+  - After generating each take, run `bin/audio_qa.py` (`## Audio QA` below) and [`07_qa_and_review.md`](./07_qa_and_review.md) checkpoint 2 (`moss-transcribe` proper-noun + numeric/claim spot-check with human listen-back) before logging `tts_budget.py ... log`.
+- **1 take + 1 retake per line.** Local takes are free and unlimited, so the cap is a quality discipline, not a quota. A third attempt means changing the description string, reference clip, or the `tts_text` respelling (never canonical `dialogue[*].line`), not the policy. Log every take via the sibling skill's `bin/tts_budget.py ... log` against project `@tts_ledger` after `bin/audio_qa.py` and the `moss-transcribe` proper-noun check (07 checkpoint 2).
+- Draft/scratch timing (mute pass, subtitle estimates) uses the same local engine as the finals (`moss-nano-tts` runs on CPU with zero VRAM, per the sibling skill's dispatcher), so timings carry over.
+- Durations: **real audio is the timing source.** After generation, measure every take (`ffprobe`) and set shot lengths and `at` offsets from the measurements — never from word-count estimates (measured on the old Gemini route: invented-dialect reads ran ~2.2 words/s vs the 2.5 estimate, 2026-11-06; re-measure on MOSS).
+- STATION/PA/broadcast voices get a radio filter at mix (module 08: `highpass`/`lowpass` + slight `aecho`), and a distinct ledger voice.
+
+## Audio QA (every take)
+
+1. `bin/audio_qa.py` (this skill's bin; the sibling kirby-local-first-video-pipeline ships an equivalent) — per-second RMS windows, ~−38 dB speech threshold; an overall `volumedetect` mean is **not** acceptable (it hides tail-crammed takes; measured lesson, 2026-11-06).
+2. Duration within the shot's slot; trim or retime the shot, never speed the voice.
+3. Playback rule: audition files in **wav or mpv** — VLC fails to decode some TTS m4a encodings and plays near-silence (root-caused 2026-11-06). Loudness-match audition copies into `wav/` for fair A/B listening.
+
+## Failure ladder
+
+A silent or truncated local take: re-run once and check the per-second RMS before judging the voice. If it repeats, treat it as an engine or setup fault and fix that. There is no cloud fallback: never switch a line to a cloud voice.
