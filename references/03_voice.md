@@ -1,6 +1,6 @@
 # Module 03: Voice
 
-Local TTS only. Cloud TTS (Gemini, ElevenLabs) is out of policy since 2026-11-07 and never called inside this production pipeline (the narration and voice-ledger steps it controls), for any reason: no quota, no budget gate, no cloud fallback. Third-party tools outside this pipeline (for example NotebookLM Audio Overviews) are for separate deliverables only, governed by their own skills; their audio is never used as narration or character voice in this pipeline. The engine routes (`moss-nano-tts` for narration and host, `moss-voice` for characters) and the `@tts_ledger`, which refuses to record a cloud engine, live in the sibling skill (`kirby-local-first-video-pipeline`, module 02); this module adds the studio's character-voice machinery.
+Local TTS only for this pipeline's voice route. Cloud TTS (Gemini, ElevenLabs) is out of policy since 2026-11-07 and never called inside this production pipeline (the narration and voice-ledger steps it controls), for any reason: no quota, no budget gate, no cloud fallback. Third-party tools outside this pipeline (for example NotebookLM Audio Overviews, routed by [`kirby-off-page-seo`](../../kirby-off-page-seo/SKILL.md) Module 26) are for separate deliverables only; their audio is never used as narration, character voice or any other audio in this pipeline. The engine routes (`moss-nano-tts` for narration and host, `moss-voice` for characters) and the `@tts_ledger`, which refuses to record a cloud engine, live in the sibling skill (`kirby-local-first-video-pipeline`, module 02); this module adds the studio's character-voice machinery.
 
 ## Voice ledger (`bible/voices.md` + `assets/voice-ledger.template.json`)
 
@@ -16,6 +16,8 @@ One locked entry per speaking character, recorded **before** the first generated
 | test_sentence_result | The dialect test sentence pass/fail + QA numbers |
 
 Dialect/invented-language steering goes in the style note (e.g. "pronounce like Dutch: doubled vowels long, hard g"). Do not assume the local engine honours it: the test sentence per dialect is generated and archived once per voice, and **the owner listens and picks** — a spoken read cannot be judged from text.
+
+**Consent gate:** a `moss-nano-tts` reference clip of a real person's voice is used only after that person's written consent is on record; no real person is cloned without it. The full rule (where the record is kept, unknown-origin clips, `moss-voice` descriptions) lives in the sibling skill's [`02_tts_budget.md`](../../kirby-local-first-video-pipeline/references/02_tts_budget.md), under Voice locks, and applies here unchanged.
 
 ## Generation discipline
 
