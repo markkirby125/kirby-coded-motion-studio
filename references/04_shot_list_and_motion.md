@@ -47,7 +47,7 @@ Implementation notes (all measured/proven):
 - `shake` composites a pre-rendered fx clip over the still (amp ≤ 24 px; low hz reads smoother).
 - Parts are video-only 1080×1920 (or the channel's norm) 30 fps, exactly `seconds` long, normalised to the same codec/pixel-format before concat — then one final re-encode adds audio and subtitles (module 08).
 
-## Inserts (zero credits, deterministic)
+## Inserts (code-rendered, no model credits, intended deterministic)
 
 Rendered graphics — captions, comms/readouts, notes, end cards, Previously — are **code-rendered**, never generated: headless-Chromium HTML→PNG frames (intended to be deterministic, with byte-identical re-renders reported but not independently verified here; one-line cards may use ffmpeg `drawtext`), assembled to film and either joined as opaque cut-aways or alpha-composited as overlays at their `start_<v>` times. On-screen text obeys the project layer's language policy (e.g. invented-language station text, English cards). A length change to any insert is a timing change: recompute starts, `at`s and captions downstream.
 

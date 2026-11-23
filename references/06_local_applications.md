@@ -27,7 +27,7 @@ for any local-app task: **adapter → real app CLI → Chromium (HTML→PNG inse
 3. A hung adapter shows near-zero CPU — it is *blocked*, not busy. Time-box every local-app call (`timeout`), and never extend a wait past the time-box twice without a new hypothesis.
 4. Generation output "file not found" right after a success response is write-lag — poll (≤90 s) before retrying.
 5. Health-check services before batches (SwarmUI: `ListBackends`/status; the sibling skill's tools).
-6. Patches to the adapter venv are lost on reinstall — record them in the project layer or upstream them (see issue #639).
+6. Patches to the adapter venv are lost on reinstall — record them in the project layer or upstream them (see upstream issue #639, not verified here).
 
 ## The ffmpeg/PIL floor (what "code-only" falls back to)
 
