@@ -17,7 +17,7 @@ One locked entry per speaking character, recorded **before** the first generated
 
 Dialect/invented-language steering goes in the style note (e.g. "pronounce like Dutch: doubled vowels long, hard g"). Do not assume the local engine honours it: the test sentence per dialect is generated and archived once per voice, and **the owner listens and picks** — a spoken read cannot be judged from text.
 
-**Consent gate:** a `moss-nano-tts` reference clip of a real person's voice is used only after a written consent record exists for that person; a clip of unknown origin counts as a real person's, and no real person is cloned without it (use a `-v` preset instead). The full rule (where the record is kept, unknown-origin clips, `moss-voice` descriptions) lives in the sibling skill's [`02_tts_budget.md`](../../kirby-local-first-video-pipeline/references/02_tts_budget.md), under Voice locks, and applies here unchanged.
+**Consent gate:** a `moss-nano-tts` reference clip of a real person's voice is used only after a written consent record exists for that person; a clip of unknown origin counts as a real person's, and no real person is cloned without it (use a `-v` preset instead). Note only an opaque consent record ID (no names) and its date in `bible/voices.md`, and keep the record itself out of git. The full rule (where the record is kept, unknown-origin clips, `moss-voice` descriptions) lives in the sibling skill's [`02_tts_budget.md`](../../kirby-local-first-video-pipeline/references/02_tts_budget.md), under Voice locks, and applies here unchanged.
 
 ## Generation discipline
 
