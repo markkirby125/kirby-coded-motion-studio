@@ -1,7 +1,7 @@
 # Dispatcher: Coded-Motion Studio
 
 Generalised, local-first production engine for narration-led YouTube video. One doctrine:
-**every frame is either locally generated (stills), rendered by code (inserts, motion), or mixed by code (audio) — no generative video model is ever used.** Voice is local-only (cloud TTS left policy on 2026-11-07); stills are local too, so there are **no cloud routes inside this pipeline** and no budget gate. (Optional separate cloud web visualizers live outside this pipeline in `kirby-gemini-interactive-study-pages` — see Related Skills.)
+**every frame is either locally generated (stills), rendered by code (inserts, motion), or mixed by code (audio) — no generative video model is ever used.** Voice is local-only (cloud TTS left this pipeline's policy on 2026-11-07); stills are local too, so there are **no cloud routes inside this pipeline** and no budget gate. (Optional separate cloud web visualizers live outside this pipeline in `kirby-gemini-interactive-study-pages` — see Related Skills.)
 
 This skill is **generalised**. It never hardcodes channel canon. Every project carries a
 **project layer** — a "local-first production rules" section in its `CLAUDE.md`/`AGENTS.md`

@@ -12,6 +12,6 @@ publish and metrics.
 
 Verified on this machine 2026-11-07: MOSS local stills (unlimited), Inkscape/Blender/GIMP
 adapters (see module 06), ffmpeg motion vocabulary, and the full review protocol (vision
-rubric + mechanical checks). Voice is local MOSS TTS only: cloud TTS left policy on
+rubric + mechanical checks). Voice is local MOSS TTS only: cloud TTS left this pipeline's policy on
 2026-11-07 and was removed from this skill's voice route (module 03). Stills are local
 only too (module 05). The MOSS routes are verified in the sibling skill, not re-verified here.

@@ -1,6 +1,6 @@
 # Module 03: Voice
 
-Local TTS only. Cloud TTS (Gemini, ElevenLabs) left policy house-wide on 2026-11-07 and is never called, for any reason: no quota, no budget gate, no cloud fallback. The engine routes (`moss-nano-tts` for narration and host, `moss-voice` for characters) and the `@tts_ledger`, which refuses to record a cloud engine, live in the sibling skill (`kirby-local-first-video-pipeline`, module 02); this module adds the studio's character-voice machinery.
+Local TTS only. Cloud TTS (Gemini, ElevenLabs) is out of policy since 2026-11-07 and never called inside this production pipeline (the narration and voice-ledger steps it controls), for any reason: no quota, no budget gate, no cloud fallback. The engine routes (`moss-nano-tts` for narration and host, `moss-voice` for characters) and the `@tts_ledger`, which refuses to record a cloud engine, live in the sibling skill (`kirby-local-first-video-pipeline`, module 02); this module adds the studio's character-voice machinery. Third-party tools outside this pipeline, such as NotebookLM Audio Overviews, are out of its scope and governed by their own skills.
 
 ## Voice ledger (`bible/voices.md` + `assets/voice-ledger.template.json`)
 
