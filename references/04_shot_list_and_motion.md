@@ -26,7 +26,7 @@ deterministic, free, and frame-exact.
 ## Shot grammar (rules that make coded motion work)
 
 1. **Never a visible talking mouth.** Lines land over the shoulder, on the listener's face, on hands, on objects, or off-screen. Insert text speaks exposition.
-2. Roughly half close-ups, a third mediums, the rest wide "small figure in big space" — cheap to generate, strong to push-in on.
+2. Default mix (a heuristic, not measured; the project layer may retune): roughly half close-ups, a third mediums, the rest wide "small figure in big space" — cheap to generate, strong to push-in on.
 3. Every `still` gets exactly one coded move; every insert is a full-frame card or a placed overlay.
 4. Nothing in frame is *required* to move for the story; the move supplies the life.
 
@@ -49,7 +49,7 @@ Implementation notes (all measured/proven):
 
 ## Inserts (zero credits, deterministic)
 
-Rendered graphics — captions, comms/readouts, notes, end cards, Previously — are **code-rendered**, never generated: headless-Chromium HTML→PNG frames (deterministic, byte-identical re-renders; one-line cards may use ffmpeg `drawtext`), assembled to film and either joined as opaque cut-aways or alpha-composited as overlays at their `start_<v>` times. On-screen text obeys the project layer's language policy (e.g. invented-language station text, English cards). A length change to any insert is a timing change: recompute starts, `at`s and captions downstream.
+Rendered graphics — captions, comms/readouts, notes, end cards, Previously — are **code-rendered**, never generated: headless-Chromium HTML→PNG frames (intended to be deterministic, with byte-identical re-renders reported but not independently verified here; one-line cards may use ffmpeg `drawtext`), assembled to film and either joined as opaque cut-aways or alpha-composited as overlays at their `start_<v>` times. On-screen text obeys the project layer's language policy (e.g. invented-language station text, English cards). A length change to any insert is a timing change: recompute starts, `at`s and captions downstream.
 
 ## Assembly (per version)
 

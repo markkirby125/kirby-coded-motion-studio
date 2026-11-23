@@ -11,7 +11,7 @@ for any local-app task: **adapter → real app CLI → Chromium (HTML→PNG inse
 | Blender 5.2.2 | `cli-anything-blender` | script gen 0.09 s; real render ~2 s | Adapter *plans* (writes a bpy script); **real Blender must execute it** (by design). Scene must contain a camera or render errors. |
 | GIMP 3.2.6 (Flatpak) | `cli-anything-gimp` | correct output via 60 s Script-Fu wait → automatic Pillow fallback | GIMP 3 requires explicit `--batch-interpreter=plug-in-script-fu-eval` (local patch; upstream issue HKUDS/CLI-Anything#639). The Flatpak build hangs forever on any erroring batch script — so **native batch is not trusted**; the Pillow fallback is the working route. Use GIMP only when GIMP-specific processing is genuinely needed. |
 | SwarmUI/ComfyUI | HTTP (module 05) | unlimited stills | model-load lag + write-lag: poll output paths. |
-| Headless Chromium (HTML→PNG inserts) | `headless Chromium` (`render.mjs`) | reported deterministic output on 2026-11-07 tests (`<project>/templates/tools/render.mjs`) | Project-local HTML→PNG insert path (`04_shot_list_and_motion.md` & `kirby-local-first-video-pipeline`). |
+| Headless Chromium (HTML→PNG inserts) | `headless Chromium` (`render.mjs`) | reported deterministic output on 2026-11-07 tests (`<project>/templates/tools/render.mjs`); not re-measured here, so add a dated measured entry before relying on it | Project-local HTML→PNG insert path (`04_shot_list_and_motion.md` & `kirby-local-first-video-pipeline`). |
 | ffmpeg + PIL | the floor | everything else | The default raster/composition path; skips GIMP's 60 s penalty entirely. |
 
 ### Candidate routes (unverified)

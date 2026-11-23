@@ -22,7 +22,7 @@ the `@route_table`/`@tts_ledger` templates. This skill consumes them; it does no
 | `@voice_ledger` | Data (committed) | character → local engine/voice/style-note, locked per series. Template in `assets/voice-ledger.template.json`. |
 | `@shot_list` | Data (`shots.json`) | One row per shot: `id`, `engine` (`still \| insert`), size, camera, action, wardrobe variant, canonical `dialogue` (`sub`) + optional `tts_text` override + `at`, `insert` `text`/`template`, motion spec. Template in `assets/shots.template.json`. |
 | `@motion_spec` | Rule | The coded move applied to a still (push/pan/parallax/shake/drift/hold), with parameters. Vocabulary in module 04. |
-| `@qa_gates` | Checklist | Contact-sheet vision gate on every asset; **Pre-production / Pre-TTS Gate & Post-synthesis proper-noun check** (`bible/claims.md` for stats & factual display text; `bible/pronunciation.md` for spoken proper nouns per `07_qa_and_review.md`); per-second RMS on every audio take; assembly checks on every export. |
+| `@qa_gates` | Checklist | Contact-sheet vision gate on every asset; **Pre-production / Pre-TTS Gate & Post-synthesis proper-noun check** (`bible/claims.md` for stats & factual display text; `bible/pronunciation.md` for spoken proper nouns per `07_qa_and_review.md`); pre-TTS voice-clone consent record (`03_voice.md`) for a real person's or unknown-origin `-r` clip; per-second RMS on every audio take; assembly checks on every export. |
 
 ## 🧭 Operational Routing Matrix
 

@@ -7,7 +7,7 @@ sibling skill's `@route_table` records the project's instantiation.
 
 | Route | Engine | Limit (measured 2026-11-07) | Use for |
 |---|---|---|---|
-| local | MOSS MCP → SwarmUI/ComfyUI on the local GPU (`localhost:7801`) | unlimited, free | Every still |
+| local | MOSS MCP (`moss-image:generate_image`) → SwarmUI/ComfyUI on the local GPU; direct HTTP to the same backend at `localhost:7801` is the alternative | unlimited, free | Every still |
 
 There is no cloud route and no budget gate: the sibling skill's doctrine is local apps only.
 A project whose spec still names a cloud image route must be migrated to the local route
@@ -15,7 +15,7 @@ before production.
 
 ## Local route operating rules (measured 2026-11-07)
 
-- Endpoint `POST /API/GenerateText2Image` with a fresh `POST /API/GetNewSession` session id per call; payload keys `prompt`, `negativeprompt`, `model`, `width`, `height`, `steps`, `cfgscale`, `seed`, optional `init_image` (data-URI) + `denoise` for img2img.
+- Direct-HTTP alternative to the MCP tool (same SwarmUI backend): endpoint `POST /API/GenerateText2Image` with a fresh `POST /API/GetNewSession` session id per call; payload keys `prompt`, `negativeprompt`, `model`, `width`, `height`, `steps`, `cfgscale`, `seed`, optional `init_image` (data-URI) + `denoise` for img2img.
 - **The first call after idle loads the model**: the HTTP call may time out while generation continues. Never blind-retry — poll the reported output path under the SwarmUI Output dir (it appears within ~90 s). An immediate "file not found" on a 200 response is write-lag: poll, don't regenerate.
 - Image dims in multiples of 64; 20 steps, cfg 3.5–5.0. Seed-lock per character/asset family so regenerations stay in-family.
 - Verify with `ls -lh` (and a vision check at module 07) before reporting done.
